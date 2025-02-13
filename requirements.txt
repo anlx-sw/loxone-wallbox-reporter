@@ -1,7 +1,2 @@
-ftplib
-re
 pandas
-smtplib
-os
-email
 reportlab
