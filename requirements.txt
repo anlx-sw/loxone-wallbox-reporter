@@ -1,0 +1,4 @@
+ftplib3
+pandas
+reportlab
+python-dotenv
