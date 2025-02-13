@@ -1,4 +1,7 @@
-ftplib3
+ftplib
+re
 pandas
+smtplib
+os
+email
 reportlab
-python-dotenv
