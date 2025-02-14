@@ -31,6 +31,10 @@ LOGFILE_PATH = os.getenv("LOGFILE_PATH", "/log/wallbox.log")
 REPORTING_DAY = os.getenv(
     "REPORTING_DAY", 2
 )  # An diesem Tag des Folgemonats werden die Reports versendet
+MONTH_LOOKBACK = os.getenv(
+    "MONTH_LOOKBACK", 1
+)  # Monate zurück - wird immer 1 sein ausser beim debugging
+
 
 # --- Header-Parameter ---
 kostenersatz_dict = {2025: 35.889}  # Jahr -> Kostenersatz (Cent/kWh)
@@ -224,7 +228,7 @@ def main():
                 print(df)
                 aktuelles_jahr, aktueller_monat = (
                     datetime.now().year,
-                    datetime.now().month - 1,
+                    datetime.now().month - MONTH_LOOKBACK,
                 )
                 if aktueller_monat == 0:
                     aktuelles_jahr -= 1
