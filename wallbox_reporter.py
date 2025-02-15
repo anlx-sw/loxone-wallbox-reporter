@@ -219,13 +219,21 @@ def main():
         REPORTING_DAY,
         "Tag des Folgemonats ausgeführt und versendet.",
     )
+    print(f"Aktuelles Datum: {datetime.now()}, REPORTING_DAY: {REPORTING_DAY}")
     while True:
         now = datetime.now()
+        print(f"Prüfe Bedingungen: Tag {now.day}, Monat {now.month}, Last sent: {last_sent_month}")
         if now.day == REPORTING_DAY and now.month != last_sent_month:
             try:
+                print("Starte Verarbeitung...")
+                print("Hole Logfile...")
                 log_lines = fetch_logfile()
+                print(f"Anzahl Logzeilen: {len(log_lines)}")
+
+                print("Parse Logfile...")                
                 df = parse_log(log_lines)
                 print(df)
+
                 aktuelles_jahr, aktueller_monat = (
                     datetime.now().year,
                     datetime.now().month - MONTH_LOOKBACK,
@@ -234,6 +242,7 @@ def main():
                     aktuelles_jahr -= 1
                     aktueller_monat = 12
 
+                print(f"Berechne für Jahr: {aktuelles_jahr}, Monat: {aktueller_monat}")
                 monatswerte = compute_monthly_sums(df, aktuelles_jahr, aktueller_monat)
                 print("Monatssummen für", aktueller_monat, aktuelles_jahr, monatswerte)
                 # --- Wenn der Bericht keine Daten enthält
