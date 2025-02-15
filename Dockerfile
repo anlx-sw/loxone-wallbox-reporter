@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y git \
     && pip install --no-cache-dir pandas reportlab
 
 # Starte direkt das Python-Skript
-CMD ["python", "wallbox_reporter.py"]
+CMD ["python","-u","wallbox_reporter.py"]
