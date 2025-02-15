@@ -38,7 +38,7 @@ REPORTING_DAY = int(
 MONTH_LOOKBACK = int(
     os.getenv("MONTH_LOOKBACK", "1")
 )  # Monate zurück - wird immer 1 sein ausser beim debugging
-
+# Environment-Variable TZ kann gesetzt werden, um die Zeitzone des Containers einzustellen.
 
 # --- Header-Parameter ---
 kostenersatz_dict = {2025: 35.889}  # Jahr -> Kostenersatz (Cent/kWh)
