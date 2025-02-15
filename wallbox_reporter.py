@@ -224,8 +224,8 @@ def main():
         now = datetime.now()
         print(f"Prüfe Bedingungen: Tag {now.day}, Monat {now.month}, Last sent: {last_sent_month}")
         if now.day == REPORTING_DAY and now.month != last_sent_month:
+            print("Starte Verarbeitung...")
             try:
-                print("Starte Verarbeitung...")
                 print("Hole Logfile...")
                 log_lines = fetch_logfile()
                 print(f"Anzahl Logzeilen: {len(log_lines)}")
@@ -276,6 +276,7 @@ def main():
                     ADMIN_EMAIL,
                     is_error=True,
                 )
+        print("Sleep 6 Stunden...")
         time.sleep(21600)
 
 
