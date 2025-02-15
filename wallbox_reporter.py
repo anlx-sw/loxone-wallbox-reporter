@@ -16,7 +16,11 @@ FTP_USER = os.getenv("FTP_USER", "ftpbenutzer")
 FTP_PASSWORD = os.getenv("FTP_PASSWORD", "ftppasswort")
 FILTER_USER = os.getenv(
     "FILTER_USER", "AZ999ZZ"
-)  # Benutzer-ID welche mit dem Kennzeichen übereinstimmen sollte
+)  # Benutzer-ID nach welcher die Ladelogs geparsed weren sollen
+LICENSE_PLATE = os.getenv(
+    "LICENSE_PLATE", "AZ999ZZ"
+)  # Kennzeichen, welches den gefilterten Ladelogs zugeordnet werden soll
+
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.example.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USE_SSL = os.getenv("SMTP_USE_SSL", "False").lower() in [
@@ -140,7 +144,7 @@ def parse_log(lines):
                         fahrzeug_verbunden,
                         fahrzeug_getrennt,
                         user,
-                        user,
+                        LICENSE_PLATE,
                         energy_kwh,
                         duration_hours,
                         cost_eur,
