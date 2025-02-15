@@ -28,11 +28,11 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "smtppasswort")
 BILLING_EMAIL = os.getenv("BILLING_EMAIL", "billing@example.com")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@example.com")
 LOGFILE_PATH = os.getenv("LOGFILE_PATH", "/log/wallbox.log")
-REPORTING_DAY = os.getenv(
-    "REPORTING_DAY", 2
+REPORTING_DAY = int(
+    os.getenv("REPORTING_DAY", "2")
 )  # An diesem Tag des Folgemonats werden die Reports versendet
-MONTH_LOOKBACK = os.getenv(
-    "MONTH_LOOKBACK", 1
+MONTH_LOOKBACK = int(
+    os.getenv("MONTH_LOOKBACK", "1")
 )  # Monate zurück - wird immer 1 sein ausser beim debugging
 
 
@@ -222,7 +222,9 @@ def main():
     print(f"Aktuelles Datum: {datetime.now()}, REPORTING_DAY: {REPORTING_DAY}")
     while True:
         now = datetime.now()
-        print(f"Prüfe Bedingungen: Tag {now.day}, Monat {now.month}, Last sent: {last_sent_month}")
+        print(
+            f"Prüfe Bedingungen: Tag {now.day}, Monat {now.month}, Last sent: {last_sent_month}"
+        )
         if now.day == REPORTING_DAY and now.month != last_sent_month:
             print("Starte Verarbeitung...")
             try:
@@ -230,7 +232,7 @@ def main():
                 log_lines = fetch_logfile()
                 print(f"Anzahl Logzeilen: {len(log_lines)}")
 
-                print("Parse Logfile...")                
+                print("Parse Logfile...")
                 df = parse_log(log_lines)
                 print(df)
 
