@@ -2,17 +2,8 @@ version: '3.8'
 
 services:
   wallbox-reporter:
-    image: python:3.12-slim
+    image: ghcr.io/anlx-sw/wallbox-reporter:latest
     working_dir: /app
-    command: >
-      bash -c "
-      apt-get update && 
-      apt-get install -y git &&
-      git clone https://github.com/anlx-sw/loxone-wallbox-reporter.git /tmp/repo &&
-      cp /tmp/repo/* /app/ &&
-      rm -rf /tmp/repo &&
-      pip install --no-cache-dir -r requirements.txt &&
-      python wallbox_reporter.py"
     environment:
       - FTP_SERVER=loxone-miniserver.local
       - FTP_USER=meinbenutzer

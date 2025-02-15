@@ -1,0 +1,12 @@
+
+### .github/dependabot.yml: Automatische Updates für Basis-Image & Requirements
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
