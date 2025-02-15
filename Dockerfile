@@ -4,6 +4,8 @@ FROM python:3.13-slim
 # Setze Arbeitsverzeichnis
 WORKDIR /app
 
+# Caching verhindern wenn neuer Commit
+ADD https://api.github.com/repos/anlx-sw/loxone-wallbox-reporter/git/refs/heads/main version.json
 # Installiere benötigte Pakete und klone das Repository
 RUN apt-get update && apt-get install -y git \
     && git clone https://github.com/anlx-sw/loxone-wallbox-reporter.git /tmp/repo \
