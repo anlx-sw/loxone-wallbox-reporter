@@ -9,12 +9,16 @@ services:
       - FTP_USER=meinbenutzer
       - FTP_PASSWORD=meinpasswort
       - FILTER_USER=AZ999ZZ
+      - LICENSE_PLATE=AZ999ZZ
       - SMTP_SERVER=smtp.example.com
       - SMTP_PORT=587
       - SMTP_USER=your-email@example.com
       - SMTP_PASSWORD=your-password
       - BILLING_EMAIL=billing@example.com
       - ADMIN_EMAIL=admin@example.com
+      - REPORTING_DAY=2
+      - MONTH_LOOKBACK=1
+      - TZ=Europe/Vienna
     volumes:
       - wallbox_reports:/app/reports
     restart: unless-stopped
