@@ -189,10 +189,10 @@ def compute_monthly_sums(df, year, month):
 
         total_duration = df_filtered["Dauer (Std)"].sum()
         total_duration = round(total_duration, 2)
-        total_energy = df_filtered["Energie (kWh)"].sum()
-        total_energy = round(total_energy, 2)
-        total_cost = df_filtered["Kosten (EUR)"].sum()
-        total_cost = round(total_cost, 2)
+        total_energy_unrounded = df_filtered["Energie (kWh)"].sum()
+        kostenersatz = kostenersatz_dict.get(year, 0) / 100  # Cent to EUR
+        total_cost = total_energy_unrounded * kostenersatz
+        total_energy = round(total_energy_unrounded, 2)
 
         return {
             "Gesamtdauer Laden": total_duration,
