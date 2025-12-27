@@ -41,7 +41,10 @@ MONTH_LOOKBACK = int(
 # Environment-Variable TZ kann gesetzt werden, um die Zeitzone des Containers einzustellen.
 
 # --- Header-Parameter ---
-kostenersatz_dict = {2025: 35.889}  # Jahr -> Kostenersatz (Cent/kWh)
+kostenersatz_dict = {
+    2025: 35.889,
+    2026: 32.806
+}  # Jahr -> Kostenersatz (Cent/kWh)
 
 
 def send_email(subject, body, recipient, attachment_path=None, is_error=False):
